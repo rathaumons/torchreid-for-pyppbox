@@ -7,12 +7,12 @@ import torch
 import torch.nn as nn
 import torch.utils.model_zoo as model_zoo
 
+from .base_model import get_model_dir
+
 __all__ = ['resnet50_ibn_a']
 
 model_urls = {
-    'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
-    'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
-    'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
+    'resnet50_ibn_a': 'https://drive.google.com/uc?export=download&id=1NmB_HW7ONbPDCO-bi3i78OLz4spp0jb5',
 }
 
 
@@ -263,6 +263,20 @@ class ResNet(nn.Module):
         else:
             raise KeyError("Unsupported loss: {}".format(self.loss))
 
+def init_pretrained_weights_plus(model, model_url, model_dir, file_name):
+    """Initializes model with pretrained weights.
+    
+    Layers that don't match with pretrained layers in name or size are kept unchanged.
+    """
+    pretrain_dict = model_zoo.load_url(model_url, model_dir=model_dir, file_name=file_name)
+    model_dict = model.state_dict()
+    pretrain_dict = {
+        k: v
+        for k, v in pretrain_dict.items()
+        if k in model_dict and model_dict[k].size() == v.size()
+    }
+    model_dict.update(pretrain_dict)
+    model.load_state_dict(model_dict)
 
 def init_pretrained_weights(model, model_url):
     """Initializes model with pretrained weights.
@@ -285,5 +299,5 @@ def resnet50_ibn_a(num_classes, loss='softmax', pretrained=False, **kwargs):
         Bottleneck, [3, 4, 6, 3], num_classes=num_classes, loss=loss, **kwargs
     )
     if pretrained:
-        init_pretrained_weights(model, model_urls['resnet50'])
+        init_pretrained_weights_plus(model, model_urls['resnet50_ibn_a'], get_model_dir(), 'resnet50_ibn_a-d9d0bb7b.pth')
     return model

@@ -3,15 +3,17 @@ import torch.utils.model_zoo as model_zoo
 from torch import nn
 from torch.nn import functional as F
 
+from .base_model import get_model_dir
+
 __all__ = ['mobilenetv2_x1_0', 'mobilenetv2_x1_4']
 
 model_urls = {
     # 1.0: top-1 71.3
     'mobilenetv2_x1_0':
-    'https://mega.nz/#!NKp2wAIA!1NH1pbNzY_M2hVk_hdsxNM1NUOWvvGPHhaNr-fASF6c',
+    'https://drive.google.com/uc?export=download&id=1K7_CZE_L_Tf-BRY6_vVm0G-0ZKjVWh3R',
     # 1.4: top-1 73.9
     'mobilenetv2_x1_4':
-    'https://mega.nz/#!RGhgEIwS!xN2s2ZdyqI6vQ3EwgmRXLEW3khr9tpXg96G9SUJugGk',
+    'https://drive.google.com/uc?export=download&id=10c0ToIGIVI0QZTx284nJe8QfSJl5bIta',
 }
 
 
@@ -220,6 +222,21 @@ class MobileNetV2(nn.Module):
             raise KeyError("Unsupported loss: {}".format(self.loss))
 
 
+def init_pretrained_weights_plus(model, model_url, model_dir, file_name):
+    """Initializes model with pretrained weights.
+    
+    Layers that don't match with pretrained layers in name or size are kept unchanged.
+    """
+    pretrain_dict = model_zoo.load_url(model_url, model_dir=model_dir, file_name=file_name)
+    model_dict = model.state_dict()
+    pretrain_dict = {
+        k: v
+        for k, v in pretrain_dict.items()
+        if k in model_dict and model_dict[k].size() == v.size()
+    }
+    model_dict.update(pretrain_dict)
+    model.load_state_dict(model_dict)
+
 def init_pretrained_weights(model, model_url):
     """Initializes model with pretrained weights.
     
@@ -246,12 +263,7 @@ def mobilenetv2_x1_0(num_classes, loss, pretrained=True, **kwargs):
         **kwargs
     )
     if pretrained:
-        # init_pretrained_weights(model, model_urls['mobilenetv2_x1_0'])
-        import warnings
-        warnings.warn(
-            'The imagenet pretrained weights need to be manually downloaded from {}'
-            .format(model_urls['mobilenetv2_x1_0'])
-        )
+        init_pretrained_weights_plus(model, model_urls['mobilenetv2_x1_0'], get_model_dir(), 'mobilenetv2_1.0-0f96a698.pth')
     return model
 
 
@@ -265,10 +277,5 @@ def mobilenetv2_x1_4(num_classes, loss, pretrained=True, **kwargs):
         **kwargs
     )
     if pretrained:
-        # init_pretrained_weights(model, model_urls['mobilenetv2_x1_4'])
-        import warnings
-        warnings.warn(
-            'The imagenet pretrained weights need to be manually downloaded from {}'
-            .format(model_urls['mobilenetv2_x1_4'])
-        )
+        init_pretrained_weights_plus(model, model_urls['mobilenetv2_x1_4'], get_model_dir(), 'mobilenetv2_1.4-bc1cc36b.pth')
     return model

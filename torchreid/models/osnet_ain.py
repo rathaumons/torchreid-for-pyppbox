@@ -4,6 +4,8 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
+from .base_model import get_model_dir
+
 __all__ = [
     'osnet_ain_x1_0', 'osnet_ain_x0_75', 'osnet_ain_x0_5', 'osnet_ain_x0_25'
 ]
@@ -447,7 +449,6 @@ class OSNet(nn.Module):
         else:
             raise KeyError("Unsupported loss: {}".format(self.loss))
 
-
 def init_pretrained_weights(model, key=''):
     """Initializes model with pretrained weights.
     
@@ -458,6 +459,7 @@ def init_pretrained_weights(model, key=''):
     import gdown
     from collections import OrderedDict
 
+    '''
     def _get_torch_home():
         ENV_TORCH_HOME = 'TORCH_HOME'
         ENV_XDG_CACHE_HOME = 'XDG_CACHE_HOME'
@@ -474,6 +476,7 @@ def init_pretrained_weights(model, key=''):
 
     torch_home = _get_torch_home()
     model_dir = os.path.join(torch_home, 'checkpoints')
+
     try:
         os.makedirs(model_dir)
     except OSError as e:
@@ -483,8 +486,10 @@ def init_pretrained_weights(model, key=''):
         else:
             # Unexpected OSError, re-raise.
             raise
+    '''
+
     filename = key + '_imagenet.pth'
-    cached_file = os.path.join(model_dir, filename)
+    cached_file = os.path.join(get_model_dir(), filename)
 
     if not os.path.exists(cached_file):
         gdown.download(pretrained_urls[key], cached_file, quiet=False)

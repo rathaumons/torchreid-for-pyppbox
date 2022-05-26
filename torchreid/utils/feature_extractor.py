@@ -25,7 +25,8 @@ class FeatureExtractor(object):
     feature dimension.
 
     Args:
-        model_name (str): model name.
+        base_model_name (str): model name.
+        base_model_dir (str): base model download dir.
         model_path (str): path to model weights.
         image_size (sequence or int): image height and width.
         pixel_mean (list): pixel mean for normalization.
@@ -39,7 +40,7 @@ class FeatureExtractor(object):
         from torchreid.utils import FeatureExtractor
 
         extractor = FeatureExtractor(
-            model_name='osnet_x1_0',
+            base_model_name='osnet_x1_0',
             model_path='a/b/c/model.pth.tar',
             device='cuda'
         )
@@ -58,7 +59,8 @@ class FeatureExtractor(object):
 
     def __init__(
         self,
-        model_name='',
+        base_model_name='',
+        base_model_dir='',
         model_path='',
         image_size=(256, 128),
         pixel_mean=[0.485, 0.456, 0.406],
@@ -69,9 +71,10 @@ class FeatureExtractor(object):
     ):
         # Build model
         model = build_model(
-            model_name,
+            base_model_name,
             num_classes=1,
-            pretrained=not (model_path and check_isfile(model_path)),
+            model_dir=base_model_dir,
+            pretrained=True,
             use_gpu=device.startswith('cuda')
         )
         model.eval()
@@ -80,7 +83,7 @@ class FeatureExtractor(object):
             num_params, flops = compute_model_complexity(
                 model, (1, 3, image_size[0], image_size[1])
             )
-            print('Model: {}'.format(model_name))
+            print('Model: {}'.format(base_model_name))
             print('- params: {:,}'.format(num_params))
             print('- flops: {:,}'.format(flops))
 

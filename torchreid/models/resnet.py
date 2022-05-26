@@ -5,6 +5,8 @@ from __future__ import division, absolute_import
 import torch.utils.model_zoo as model_zoo
 from torch import nn
 
+from .base_model import get_model_dir
+
 __all__ = [
     'resnet18', 'resnet34', 'resnet50', 'resnet101', 'resnet152',
     'resnext50_32x4d', 'resnext101_32x8d', 'resnet50_fc512'
@@ -370,6 +372,20 @@ class ResNet(nn.Module):
         else:
             raise KeyError("Unsupported loss: {}".format(self.loss))
 
+def init_pretrained_weights_plus(model, model_url, model_dir, file_name):
+    """Initializes model with pretrained weights.
+    
+    Layers that don't match with pretrained layers in name or size are kept unchanged.
+    """
+    pretrain_dict = model_zoo.load_url(model_url, model_dir=model_dir, file_name=file_name)
+    model_dict = model.state_dict()
+    pretrain_dict = {
+        k: v
+        for k, v in pretrain_dict.items()
+        if k in model_dict and model_dict[k].size() == v.size()
+    }
+    model_dict.update(pretrain_dict)
+    model.load_state_dict(model_dict)
 
 def init_pretrained_weights(model, model_url):
     """Initializes model with pretrained weights.
@@ -434,7 +450,7 @@ def resnet50(num_classes, loss='softmax', pretrained=True, **kwargs):
         **kwargs
     )
     if pretrained:
-        init_pretrained_weights(model, model_urls['resnet50'])
+        init_pretrained_weights_plus(model, model_urls['resnet50'], get_model_dir(), 'resnet50-19c8e357.pth')
     return model
 
 

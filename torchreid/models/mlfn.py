@@ -4,12 +4,14 @@ import torch.utils.model_zoo as model_zoo
 from torch import nn
 from torch.nn import functional as F
 
+from .base_model import get_model_dir
+
 __all__ = ['mlfn']
 
 model_urls = {
     # training epoch = 5, top1 = 51.6
-    'imagenet':
-    'https://mega.nz/#!YHxAhaxC!yu9E6zWl0x5zscSouTdbZu8gdFFytDdl-RAdD2DEfpk',
+    'mlfn':
+    'https://drive.google.com/uc?export=download&id=1PP8Eygct5OF4YItYRfA3qypYY9xiqHuV',
 }
 
 
@@ -240,6 +242,20 @@ class MLFN(nn.Module):
         else:
             raise KeyError('Unsupported loss: {}'.format(self.loss))
 
+def init_pretrained_weights_plus(model, model_url, model_dir, file_name):
+    """Initializes model with pretrained weights.
+    
+    Layers that don't match with pretrained layers in name or size are kept unchanged.
+    """
+    pretrain_dict = model_zoo.load_url(model_url, model_dir=model_dir, file_name=file_name)
+    model_dict = model.state_dict()
+    pretrain_dict = {
+        k: v
+        for k, v in pretrain_dict.items()
+        if k in model_dict and model_dict[k].size() == v.size()
+    }
+    model_dict.update(pretrain_dict)
+    model.load_state_dict(model_dict)
 
 def init_pretrained_weights(model, model_url):
     """Initializes model with pretrained weights.
@@ -260,10 +276,5 @@ def init_pretrained_weights(model, model_url):
 def mlfn(num_classes, loss='softmax', pretrained=True, **kwargs):
     model = MLFN(num_classes, loss, **kwargs)
     if pretrained:
-        # init_pretrained_weights(model, model_urls['imagenet'])
-        import warnings
-        warnings.warn(
-            'The imagenet pretrained weights need to be manually downloaded from {}'
-            .format(model_urls['imagenet'])
-        )
+        init_pretrained_weights_plus(model, model_urls['mlfn'], get_model_dir(), 'mlfn-9cb5a267.pth.tar')
     return model
