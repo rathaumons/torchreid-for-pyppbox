@@ -5,12 +5,6 @@ from distutils.extension import Extension
 from Cython.Build import cythonize
 
 
-def readme():
-    with open('README.rst') as f:
-        content = f.read()
-    return content
-
-
 def find_version():
     version_file = 'torchreid/__init__.py'
     with open(version_file, 'r') as f:
@@ -48,7 +42,7 @@ setup(
     description='A library for deep learning person re-ID in PyTorch',
     author='Kaiyang Zhou',
     license='MIT',
-    long_description=readme(),
+    long_description=None,
     url='https://github.com/KaiyangZhou/deep-person-reid',
     packages=find_packages(),
     keywords=['Person Re-Identification', 'Deep Learning', 'Computer Vision'],
