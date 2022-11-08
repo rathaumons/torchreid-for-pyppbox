@@ -1,8 +1,8 @@
-# Torchreid - Customized for pyppbox
+# Torchreid - Customized for [`pyppbox`](https://github.com/rathaumons/pyppbox)
 
 Forked from original repo: https://github.com/KaiyangZhou/deep-person-reid
 
-## How to prepare for `pyppbox`
+## How to prepare for [`pyppbox`](https://github.com/rathaumons/pyppbox)
 
 * Clone and install requirements
 ```
