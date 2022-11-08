@@ -2,7 +2,7 @@
 
 Forked from original repo: https://github.com/KaiyangZhou/deep-person-reid
 
-## How to prepare for pyppbox
+## How to prepare for `pyppbox`
 
 * Clone and install requirements
 ```
