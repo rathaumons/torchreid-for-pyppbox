@@ -42,7 +42,14 @@ pip install -r requirements.txt
 pip install torch==1.13.1+cu117 torchaudio==0.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
 
-* Create WHL file (Should be in `torchreid-for-pyppbox\dist`)
+* Build the `rank_cy.pyx` in `torchreid/metrics/rank_cylib`
 ```
+cd torchreid/metrics/rank_cylib
+python setup.py build_ext --inplace
+```
+
+* Finally, create WHL file (Look inside `torchreid-for-pyppbox/dist`)
+```
+cd ../../..
 python setup.py bdist_wheel
 ```
