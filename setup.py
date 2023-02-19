@@ -40,10 +40,10 @@ setup(
     name='torchreid',
     version=find_version(),
     description='A library for deep learning person re-ID in PyTorch',
-    author='Kaiyang Zhou',
+    author='rathaROG',
     license='MIT',
     long_description=None,
-    url='https://github.com/KaiyangZhou/deep-person-reid',
+    url='https://github.com/rathaumons/torchreid-for-pyppbox.git',
     packages=find_packages(),
     keywords=['Person Re-Identification', 'Deep Learning', 'Computer Vision'],
     ext_modules=cythonize(ext_modules)
