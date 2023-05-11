@@ -12,8 +12,8 @@ import cv2
 import torch
 from torch.nn import functional as F
 
-import torchreid
-from torchreid.utils import (
+import pyppbox_torchreid
+from pyppbox_torchreid.utils import (
     check_isfile, mkdir_if_missing, load_pretrained_weights
 )
 
@@ -140,7 +140,7 @@ def main():
 
     use_gpu = torch.cuda.is_available()
 
-    datamanager = torchreid.data.ImageDataManager(
+    datamanager = pyppbox_torchreid.data.ImageDataManager(
         root=args.root,
         sources=args.dataset,
         height=args.height,
@@ -152,7 +152,7 @@ def main():
     )
     test_loader = datamanager.test_loader
 
-    model = torchreid.models.build_model(
+    model = pyppbox_torchreid.models.build_model(
         name=args.model,
         num_classes=datamanager.num_train_pids,
         use_gpu=use_gpu

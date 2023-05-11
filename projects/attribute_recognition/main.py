@@ -9,13 +9,13 @@ import warnings
 import torch
 import torch.nn as nn
 
-import torchreid
-from torchreid.utils import (
+import pyppbox_torchreid
+from pyppbox_torchreid.utils import (
     Logger, AverageMeter, check_isfile, open_all_layers, save_checkpoint,
     set_random_seed, collect_env_info, open_specified_layers,
     load_pretrained_weights, compute_model_complexity
 )
-from torchreid.data.transforms import (
+from pyppbox_torchreid.data.transforms import (
     Resize, Compose, ToTensor, Normalize, Random2DTranslation,
     RandomHorizontalFlip
 )
@@ -170,10 +170,10 @@ def main():
         test(model, testloader, attr_dict, use_gpu)
         return
 
-    optimizer = torchreid.optim.build_optimizer(
+    optimizer = pyppbox_torchreid.optim.build_optimizer(
         model, **optimizer_kwargs(args)
     )
-    scheduler = torchreid.optim.build_lr_scheduler(
+    scheduler = pyppbox_torchreid.optim.build_lr_scheduler(
         optimizer, **lr_scheduler_kwargs(args)
     )
 

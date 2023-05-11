@@ -1,8 +1,8 @@
 from __future__ import division, print_function, absolute_import
 
-from torchreid import metrics
-from torchreid.engine import Engine
-from torchreid.losses import CrossEntropyLoss
+from pyppbox_torchreid import metrics
+from pyppbox_torchreid.engine import Engine
+from pyppbox_torchreid.losses import CrossEntropyLoss
 
 
 class ImageSoftmaxNASEngine(Engine):

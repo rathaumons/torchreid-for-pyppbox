@@ -26,7 +26,7 @@ import numpy as np
 import argparse
 from collections import defaultdict
 
-from torchreid.utils import check_isfile, listdir_nohidden
+from pyppbox_torchreid.utils import check_isfile, listdir_nohidden
 
 
 def parse_file(filepath, regex_mAP, regex_r1, regex_r5, regex_r10, regex_r20):

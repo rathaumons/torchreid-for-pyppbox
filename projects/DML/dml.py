@@ -2,9 +2,9 @@ from __future__ import division, print_function, absolute_import
 import torch
 from torch.nn import functional as F
 
-from torchreid.utils import open_all_layers, open_specified_layers
-from torchreid.engine import Engine
-from torchreid.losses import TripletLoss, CrossEntropyLoss
+from pyppbox_torchreid.utils import open_all_layers, open_specified_layers
+from pyppbox_torchreid.engine import Engine
+from pyppbox_torchreid.losses import TripletLoss, CrossEntropyLoss
 
 
 class ImageDMLEngine(Engine):

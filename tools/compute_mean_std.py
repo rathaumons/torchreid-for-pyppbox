@@ -13,7 +13,7 @@ $ python compute_mean_std.py $DATA market1501
 """
 import argparse
 
-import torchreid
+import pyppbox_torchreid
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
     parser.add_argument('sources', type=str)
     args = parser.parse_args()
 
-    datamanager = torchreid.data.ImageDataManager(
+    datamanager = pyppbox_torchreid.data.ImageDataManager(
         root=args.root,
         sources=args.sources,
         targets=None,

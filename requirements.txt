@@ -5,11 +5,18 @@ Pillow
 six
 scipy>=1.10.0
 matplotlib
-tensorboard>=2.11.2
+tensorboard>=2.10,<2.11
 future
 yacs
 gdown
-flake8
 yapf
 isort
 imageio
+chardet
+# Export --------------------------------------
+# onnx
+# onnx-simplified
+# openvino-dev
+# openvino2tensorflow
+# tensorflow
+# tensorflow_datasets

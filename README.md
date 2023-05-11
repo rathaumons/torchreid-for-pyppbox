@@ -12,44 +12,29 @@ pip install -r requirements.txt
 ```
 
 * Install the corresponding `opencv_contrib_python` if you haven't already 
-  - For Python 3.10  & CUDA 12.0.x (Experimental)
+  - For Python 3.10  & CUDA 11.8.x
     ```
-    pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py310/opencv_contrib_python-4.7.0+cu120-cp310-cp310-win_amd64.whl
+    pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py310/opencv_contrib_python-4.7.0+cu118-cp310-cp310-win_amd64.whl
     ```
   - For Python 3.10  & CUDA 11.7.x
     ```
     pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py310/opencv_contrib_python-4.7.0+cu117-cp310-cp310-win_amd64.whl
     ```
-  - For Python 3.10  & CUDA 11.6.x
+  - For Python 3.9 & CUDA 11.8.x
     ```
-    pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py310/opencv_contrib_python-4.7.0+cu116-cp310-cp310-win_amd64.whl
-    ```
-  - For Python 3.9 & CUDA 12.0.x (Experimental)
-    ```
-    pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py39/opencv_contrib_python-4.7.0+cu120-cp39-cp39-win_amd64.whl
+    pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py39/opencv_contrib_python-4.7.0+cu118-cp39-cp39-win_amd64.whl
     ```
   - For Python 3.9 & CUDA 11.7.x
     ```
     pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py39/opencv_contrib_python-4.7.0+cu117-cp39-cp39-win_amd64.whl
     ```
-  - For Python 3.9 & CUDA 11.6.x
-    ```
-    pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py39/opencv_contrib_python-4.7.0+cu116-cp39-cp39-win_amd64.whl
-    ```
 
-* Install your preferred version of `torch`, for example `torch==1.13.1+cu117`
+* Install your preferred version of `torch`, for example `torch==2.0.0+cu118`
 ```
-pip install torch==1.13.1+cu117 torchaudio==0.13.1+cu117 torchvision==0.14.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
+pip install torch==2.0.0+cu118 torchaudio==2.0.1+cu118 torchvision==0.15.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
 ```
 
-* Build the `rank_cy.pyx` in `torchreid/metrics/rank_cylib`
+* Finally, build and create WHL file (Look inside `torchreid-for-pyppbox/dist`)
 ```
-cd torchreid/metrics/rank_cylib
-python setup.py build_ext --inplace
-```
-
-* Finally, create WHL file (Look inside `torchreid-for-pyppbox/dist`)
-```
-cd ../../..
-python setup.py bdist_wheel
+build_creat_whl.cmd
 ```

@@ -6,8 +6,8 @@ import argparse
 import torch
 import torch.nn as nn
 
-import torchreid
-from torchreid.utils import (
+import pyppbox_torchreid
+from pyppbox_torchreid.utils import (
     Logger, check_isfile, set_random_seed, collect_env_info,
     resume_from_checkpoint, load_pretrained_weights, compute_model_complexity
 )
@@ -84,10 +84,10 @@ def main():
     if cfg.use_gpu:
         torch.backends.cudnn.benchmark = True
 
-    datamanager = torchreid.data.ImageDataManager(**imagedata_kwargs(cfg))
+    datamanager = pyppbox_torchreid.data.ImageDataManager(**imagedata_kwargs(cfg))
 
     print('Building model-1: {}'.format(cfg.model.name))
-    model1 = torchreid.models.build_model(
+    model1 = pyppbox_torchreid.models.build_model(
         name=cfg.model.name,
         num_classes=datamanager.num_train_pids,
         loss=cfg.loss.name,
@@ -112,17 +112,17 @@ def main():
         model1 = nn.DataParallel(model1).cuda()
         model2 = nn.DataParallel(model2).cuda()
 
-    optimizer1 = torchreid.optim.build_optimizer(
+    optimizer1 = pyppbox_torchreid.optim.build_optimizer(
         model1, **optimizer_kwargs(cfg)
     )
-    scheduler1 = torchreid.optim.build_lr_scheduler(
+    scheduler1 = pyppbox_torchreid.optim.build_lr_scheduler(
         optimizer1, **lr_scheduler_kwargs(cfg)
     )
 
-    optimizer2 = torchreid.optim.build_optimizer(
+    optimizer2 = pyppbox_torchreid.optim.build_optimizer(
         model2, **optimizer_kwargs(cfg)
     )
-    scheduler2 = torchreid.optim.build_lr_scheduler(
+    scheduler2 = pyppbox_torchreid.optim.build_lr_scheduler(
         optimizer2, **lr_scheduler_kwargs(cfg)
     )
 

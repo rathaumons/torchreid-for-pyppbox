@@ -5,8 +5,8 @@ import argparse
 import torch
 import torch.nn as nn
 
-import torchreid
-from torchreid.utils import (
+import pyppbox_torchreid
+from pyppbox_torchreid.utils import (
     Logger, check_isfile, set_random_seed, collect_env_info,
     resume_from_checkpoint, load_pretrained_weights, compute_model_complexity
 )
@@ -19,15 +19,15 @@ from default_config import (
 
 def build_datamanager(cfg):
     if cfg.data.type == 'image':
-        return torchreid.data.ImageDataManager(**imagedata_kwargs(cfg))
+        return pyppbox_torchreid.data.ImageDataManager(**imagedata_kwargs(cfg))
     else:
-        return torchreid.data.VideoDataManager(**videodata_kwargs(cfg))
+        return pyppbox_torchreid.data.VideoDataManager(**videodata_kwargs(cfg))
 
 
 def build_engine(cfg, datamanager, model, optimizer, scheduler):
     if cfg.data.type == 'image':
         if cfg.loss.name == 'softmax':
-            engine = torchreid.engine.ImageSoftmaxEngine(
+            engine = pyppbox_torchreid.engine.ImageSoftmaxEngine(
                 datamanager,
                 model,
                 optimizer=optimizer,
@@ -37,7 +37,7 @@ def build_engine(cfg, datamanager, model, optimizer, scheduler):
             )
 
         else:
-            engine = torchreid.engine.ImageTripletEngine(
+            engine = pyppbox_torchreid.engine.ImageTripletEngine(
                 datamanager,
                 model,
                 optimizer=optimizer,
@@ -51,7 +51,7 @@ def build_engine(cfg, datamanager, model, optimizer, scheduler):
 
     else:
         if cfg.loss.name == 'softmax':
-            engine = torchreid.engine.VideoSoftmaxEngine(
+            engine = pyppbox_torchreid.engine.VideoSoftmaxEngine(
                 datamanager,
                 model,
                 optimizer=optimizer,
@@ -62,7 +62,7 @@ def build_engine(cfg, datamanager, model, optimizer, scheduler):
             )
 
         else:
-            engine = torchreid.engine.VideoTripletEngine(
+            engine = pyppbox_torchreid.engine.VideoTripletEngine(
                 datamanager,
                 model,
                 optimizer=optimizer,
@@ -152,7 +152,7 @@ def main():
     datamanager = build_datamanager(cfg)
 
     print('Building model: {}'.format(cfg.model.name))
-    model = torchreid.models.build_model(
+    model = pyppbox_torchreid.models.build_model(
         name=cfg.model.name,
         num_classes=datamanager.num_train_pids,
         loss=cfg.loss.name,
@@ -170,8 +170,8 @@ def main():
     if cfg.use_gpu:
         model = nn.DataParallel(model).cuda()
 
-    optimizer = torchreid.optim.build_optimizer(model, **optimizer_kwargs(cfg))
-    scheduler = torchreid.optim.build_lr_scheduler(
+    optimizer = pyppbox_torchreid.optim.build_optimizer(model, **optimizer_kwargs(cfg))
+    scheduler = pyppbox_torchreid.optim.build_lr_scheduler(
         optimizer, **lr_scheduler_kwargs(cfg)
     )
 
