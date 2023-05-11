@@ -29,7 +29,7 @@ pip install -r requirements.txt
     pip install https://github.com/rathaumons/pyppbox-custpkg/raw/main/py39/opencv_contrib_python-4.7.0+cu117-cp39-cp39-win_amd64.whl
     ```
 
-* Install your preferred version of `torch`, for example `torch==2.0.0+cu118`
+* Install your preferred version of `torch`, for example `torch==2.0.1+cu118`
 ```
 pip install torch==2.0.1+cu118 torchaudio==2.0.2+cu118 torchvision==0.15.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
 ```
