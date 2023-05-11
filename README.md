@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 * Install your preferred version of `torch`, for example `torch==2.0.0+cu118`
 ```
-pip install torch==2.0.0+cu118 torchaudio==2.0.1+cu118 torchvision==0.15.1+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+pip install torch==2.0.1+cu118 torchaudio==2.0.2+cu118 torchvision==0.15.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
 ```
 
 * Finally, build and create WHL file (Look inside `torchreid-for-pyppbox/dist`)
