@@ -42,8 +42,8 @@ def get_requirements(filename='requirements.txt'):
     return requires
 
 
-def force_tags(force=True):
-    if force:
+def force_tags(force_win64=True):
+    if force_win64:
         import sys
         sys.argv.extend(['--plat-name', 'win_amd64'])
 
@@ -65,5 +65,5 @@ def main():
 
 
 if __name__ == "__main__":
-    force_tags()
+    force_tags(False)
     main()
