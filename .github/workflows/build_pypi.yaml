@@ -26,7 +26,7 @@ jobs:
 #        uses: pypa/gh-action-pypi-publish@release/v1
 #        with:
 #          password: ${{ secrets.PYPI_API_TOKEN }}
-      - name: Archive Wheels in dist/*.whl
+      - name: Archive *.tar.gz
         uses: actions/upload-artifact@v3
         with:
           name: dist-source-targz
