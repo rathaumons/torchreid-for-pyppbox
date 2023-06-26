@@ -1,0 +1,5 @@
+include *.txt *.md *.in LICENSE
+include pyppbox_torchreid/metrics/rank_cylib/*.*
+exclude pyppbox_torchreid/metrics/rank_cylib/*.cpp
+global-exclude */__pycache__
+global-exclude *.pyc

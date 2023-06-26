@@ -1,4 +1,7 @@
-# cython: boundscheck=False, wraparound=False, nonecheck=False, cdivision=True
+# Updated 2023/06/26 by rathaROG
+# Force compiling with Python 3 
+
+# cython: language_level=3, boundscheck=False, wraparound=False, nonecheck=False, cdivision=True
 
 from __future__ import print_function
 import numpy as np

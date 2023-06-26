@@ -1,11 +1,11 @@
-numpy>=1.24.2
-Cython>=0.29.33
+Cython>=0.29.32
+numpy>=1.21.6
 h5py
 Pillow
 six
 scipy>=1.10.0
 matplotlib
-tensorboard>=2.10,<2.11
+tensorboard
 future
 yacs
 gdown

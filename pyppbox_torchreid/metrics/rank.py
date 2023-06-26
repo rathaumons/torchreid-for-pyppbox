@@ -8,10 +8,8 @@ try:
     IS_CYTHON_AVAI = True
 except ImportError:
     IS_CYTHON_AVAI = False
-    warnings.warn(
-        'Cython evaluation (very fast so highly recommended) is '
-        'unavailable, now use python evaluation.'
-    )
+    warnings.warn('Cython evaluation (very fast so highly recommended) is ' + 
+                  'unavailable, now use python evaluation.')
 
 
 def eval_cuhk03(distmat, q_pids, g_pids, q_camids, g_camids, max_rank):
