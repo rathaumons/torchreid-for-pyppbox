@@ -26,14 +26,6 @@ jobs:
       - name: Build
         run: |
           python -m build --wheel
-      - name: Install and Test Cython
-        run: |
-          cd dist
-          ls > whl.txt
-          python install -r whl.txt
-          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-          cd pyppbox_torchreid/metrics/rank_cylib
-          python test_cython.py
       - name: Archive Wheels in dist/*.whl
         uses: actions/upload-artifact@v3
         with:
@@ -41,3 +33,9 @@ jobs:
           path: |
             dist
             !dist/**/*.md
+      - name: Install and Test Cython
+        run: |
+          pip install git+https://github.com/rathaumons/torchreid-for-pyppbox.git
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+          cd pyppbox_torchreid/metrics/rank_cylib
+          python test_cython.py
