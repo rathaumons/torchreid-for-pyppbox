@@ -35,6 +35,7 @@ jobs:
             !dist/**/*.md
       - name: Install and Test Cython
         run: |
+          pip install opencv-contrib-python
           pip install git+https://github.com/rathaumons/torchreid-for-pyppbox.git
           pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
           cd pyppbox_torchreid/metrics/rank_cylib

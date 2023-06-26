@@ -26,9 +26,10 @@ Or install from GitHub directly:
 pip install git+https://github.com/rathaumons/torchreid-for-pyppbox.git
 ```
 
-To be able to import or run, you must install [PyTorch](https://pytorch.org/) with ***GPU***:
+To be able to run, you must install [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/) with ***GPU***:
 
 ```
+pip install opencv-contrib-python
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
