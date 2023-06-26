@@ -1,8 +1,8 @@
 name: Build `tar.gz` PyPI
-on: [push]
-#  push:
-#    tags:
-#      - "v*"
+on:
+  push:
+    tags:
+      - "v*"
 jobs:
   build_and_publish:
     runs-on: ubuntu-latest
@@ -22,10 +22,10 @@ jobs:
           python -m build --sdist
           cd dist
           pip install *.tar.gz
-#      - name: Publish 📦 to PyPI
-#        uses: pypa/gh-action-pypi-publish@release/v1
-#        with:
-#          password: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Publish 📦 to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
       - name: Archive *.tar.gz
         uses: actions/upload-artifact@v3
         with:

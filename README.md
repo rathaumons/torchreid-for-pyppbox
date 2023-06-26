@@ -5,12 +5,12 @@
 
 `Torchreid` is a library for deep-learning person re-identification using [PyTorch](https://pytorch.org/). 
 
-All source credit and more info -> [Original KaiyangZhou's repo](https://github.com/KaiyangZhou/deep-person-reid). 
-
 `pyppbox-torchreid` is a customized of `Torchreid` for [`pyppbox`](https://github.com/rathaumons/pyppbox) and:
-- Ensures that `Cython` works on all OS platform (Windows/Linux), 
+- Ensures that `Cython` natively works on all OS platform (Windows/Linux), 
 - Enables freedom of passing local model/weight files from anywhere, 
-- Disables some unused models.
+- Disables some models which are not used in `pyppbox`.
+
+All source credit and more info -> [Original KaiyangZhou's repo](https://github.com/KaiyangZhou/deep-person-reid). 
 
 ## Install
 
@@ -56,7 +56,7 @@ python -m build --wheel
 cd dist
 ```
 
-After you install `pyppbox-torchred` and [PyTorch](https://pytorch.org/), you can check if Cython `rank_cy` works:
+After you install `pyppbox-torchred`, [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/), you can check if Cython `rank_cy` works:
 
 ```
 cd pyppbox_torchreid/metrics/rank_cylib
