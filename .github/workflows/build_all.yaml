@@ -26,6 +26,7 @@ jobs:
       - name: Build and Install
         run: |
           python -m build --wheel
+          cd dist
           python install *.whl
       - name: Test Cython
         run: |
