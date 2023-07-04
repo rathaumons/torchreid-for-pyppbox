@@ -14,7 +14,7 @@ All source credit and more info -> [Original KaiyangZhou's repo](https://github.
 
 ## Install
 
-Use [Wheels fron releases](https://github.com/rathaumons/torchreid-for-pyppbox/releases) or directly install from PyPI: 
+Use [Wheels from releases](https://github.com/rathaumons/torchreid-for-pyppbox/releases) or directly install from PyPI: 
 
 ```
 pip install pyppbox-torchreid
@@ -33,7 +33,7 @@ pip install opencv-contrib-python
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
 
-***Note*: [PyTorch](https://pytorch.org/) doesn't support GUP on macOS.**
+***Note*: [PyTorch](https://pytorch.org/) doesn't support GPU on macOS.**
 
 ## Build from source
 
