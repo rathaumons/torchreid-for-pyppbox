@@ -26,7 +26,7 @@ Or install from GitHub directly:
 pip install git+https://github.com/rathaumons/torchreid-for-pyppbox.git
 ```
 
-To be able to run, you must install [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/) with ***GPU***:
+To be able to run, you must install [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/); for example, with GPU support:
 
 ```
 pip install opencv-contrib-python
