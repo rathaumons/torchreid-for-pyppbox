@@ -1,5 +1,5 @@
 Cython>=0.29.32
-numpy>=1.21.6
+numpy>=1.23.5
 h5py
 Pillow
 six
