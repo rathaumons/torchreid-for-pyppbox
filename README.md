@@ -1,26 +1,26 @@
-[![Test Build Python [3.8-3.11]](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml) 
+[![Test Build Python [3.8-3.12]](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml) 
 [![Publish to PyPI](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml)
 
-# Customized `Torchreid` for [`pyppbox`](https://github.com/rathaumons/pyppbox)
+# Customized `Torchreid` for `pyppbox`
 
 `Torchreid` is a library for deep-learning person re-identification using [PyTorch](https://pytorch.org/). 
 
 `pyppbox-torchreid` is a customized `Torchreid` for [`pyppbox`](https://github.com/rathaumons/pyppbox) and:
-- Ensures that `Cython` natively works on all OS platform (Windows/Linux/macOS), 
+- Ensures that `Cython` natively works on all OS platforms (Windows/Linux/macOS), 
 - Enables freedom of passing local model/weight files from anywhere, 
-- Disables some models which are not used in `pyppbox`.
+- Disables some models which are not used in [`pyppbox`](https://github.com/rathaumons/pyppbox).
 
 All source credit and more info -> [Original KaiyangZhou's repo](https://github.com/KaiyangZhou/deep-person-reid). 
 
 ## Install
 
-Use [Wheels from releases](https://github.com/rathaumons/torchreid-for-pyppbox/releases) or directly install from [PyPI](https://pypi.org/project/pyppbox-torchreid/): 
+Use [wheels in releases](https://github.com/rathaumons/torchreid-for-pyppbox/releases) or install from [PyPI](https://pypi.org/project/pyppbox-torchreid/): 
 
 ```
 pip install pyppbox-torchreid
 ```
 
-Or install from GitHub directly:
+Or install from GitHub repo directly (Require C++ compiler):
 
 ```
 pip install git+https://github.com/rathaumons/torchreid-for-pyppbox.git
@@ -30,10 +30,10 @@ To be able to run, you must install [OpenCV](https://github.com/opencv/opencv-py
 
 ```
 pip install opencv-contrib-python
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-***Note*: [PyTorch](https://pytorch.org/) doesn't support GPU on macOS.**
+***Note*: [PyTorch](https://pytorch.org/) doesn't have GPU support for macOS.**
 
 ## Build from source
 
