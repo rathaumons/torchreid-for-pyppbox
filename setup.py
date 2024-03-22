@@ -1,21 +1,21 @@
 # # # # # # # # # # # # # # # # # # # # # #
 #    Rewrite on 2023/06/26 by rathaROG    #
-#    Updated on 2023/08/08 by rathaROG    #
+#    Updated on 2024/03/22 by rathaROG    #
 # # # # # # # # # # # # # # # # # # # # # #
 
 
 from setuptools import setup, find_packages
-from distutils.extension import Extension
+from setuptools.extension import Extension
 
-license='MIT'
-description='Customized Torchreid for pyppbox: Deep learning person re-identification.'
+license = "MIT"
+description = "Customized Torchreid for pyppbox: Deep learning person re-identification."
 long_description = open("README.md", encoding="utf-8").read()
 requirments_txt = "requirements.txt"
-package_name='pyppbox-torchreid'
-package_path = 'pyppbox_torchreid'
+package_name = "pyppbox-torchreid"
+package_path = "pyppbox_torchreid"
 
 def get_version_string():
-    version_py = 'pyppbox_torchreid/__init__.py'
+    version_py = "pyppbox_torchreid/__init__.py"
     with open(version_py) as version_file:
         for line in version_file.read().splitlines():
             if line.startswith('__version__'):
@@ -31,7 +31,7 @@ def compile_cpp(cython_file):
     """
     import os
     import subprocess
-    cpp_file = os.path.splitext(cython_file)[0] + '.cpp'
+    cpp_file = os.path.splitext(cython_file)[0] + ".cpp"
     flags = ['--fast-fail', '--cplus']
     rc = subprocess.call(['cython'] + flags + ["-o", cpp_file, cython_file])
     if rc != 0: raise Exception('Cythonizing %s failed' % cython_file)
@@ -48,7 +48,7 @@ def numpy_include():
 def main():
     import os
     from Cython.Build import cythonize
-    ext_name = 'pyppbox_torchreid.metrics.rank_cylib.rank_cy'
+    ext_name = "pyppbox_torchreid.metrics.rank_cylib.rank_cy"
     rank_cy_pyx = os.path.join(package_path, "metrics/rank_cylib/rank_cy.pyx")
     rank_cy_cpp = compile_cpp(rank_cy_pyx)
     ext_modules = [
@@ -84,6 +84,7 @@ def main():
                      'Programming Language :: Python :: 3.9',
                      'Programming Language :: Python :: 3.10',
                      'Programming Language :: Python :: 3.11',
+                     'Programming Language :: Python :: 3.12',
                      'Topic :: Education',
                      'Topic :: Education :: Testing',
                      'Topic :: Scientific/Engineering',
