@@ -1,7 +1,7 @@
 [![Test Build Python [3.8-3.12]](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml) 
 [![Publish to PyPI](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml)
 
-# Customized `Torchreid` for `pyppbox`
+# Customized Torchreid for pyppbox
 
 `Torchreid` is a library for deep-learning person re-identification using [PyTorch](https://pytorch.org/). 
 
