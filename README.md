@@ -3,9 +3,7 @@
 
 # Customized Torchreid for pyppbox
 
-`Torchreid` is a library for deep-learning person re-identification using [PyTorch](https://pytorch.org/). 
-
-`pyppbox-torchreid` is a customized `Torchreid` for [`pyppbox`](https://github.com/rathaumons/pyppbox) and:
+`Torchreid` is a library for deep-learning person re-identification using [PyTorch](https://pytorch.org/), and `pyppbox-torchreid` is a customized `Torchreid` for [`pyppbox`](https://github.com/rathaumons/pyppbox) and:
 - Ensures that `Cython` natively works on all OS platforms (Windows/Linux/macOS), 
 - Enables freedom of passing local model/weight files from anywhere, 
 - Disables some models which are not used in [`pyppbox`](https://github.com/rathaumons/pyppbox).
