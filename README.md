@@ -14,7 +14,7 @@ All source credit and more info -> [Original KaiyangZhou's repo](https://github.
 
 ## Install
 
-Use [wheels in releases](https://github.com/rathaumons/torchreid-for-pyppbox/releases) or install from [PyPI](https://pypi.org/project/pyppbox-torchreid/): 
+Use the pre-built [wheel in releases](https://github.com/rathaumons/torchreid-for-pyppbox/releases) or install from [PyPI](https://pypi.org/project/pyppbox-torchreid/): 
 
 ```
 pip install pyppbox-torchreid
@@ -37,7 +37,7 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 ## Build from source
 
-(Optional, auto install) Building Wheels or source distribution only requires these modules:
+(Optional, auto install) Building wheels/source distribution requires these modules:
 
 ```
 pip install "setuptools>=67.2.0"
@@ -45,7 +45,7 @@ pip install "Cython>=0.29.32"
 pip install "numpy>=1.23.5"
 ```
 
-Recommend using `build` for building both `.whl` and `.tar.gz`:
+This requires C++ compiler and is recommended using `build`:
 
 ```
 git clone https://github.com/rathaumons/torchreid-for-pyppbox/
@@ -57,7 +57,7 @@ python -m build --wheel
 cd dist
 ```
 
-After you install `pyppbox-torchred`, [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/), you can check if Cython `rank_cy` works:
+After you install `pyppbox-torchred`, [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/), you can check Cython `rank_cy`:
 
 ```
 cd pyppbox_torchreid/metrics/rank_cylib
