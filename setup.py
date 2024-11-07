@@ -1,39 +1,37 @@
 # # # # # # # # # # # # # # # # # # # # # #
-#    Rewrite on 2023/06/26 by rathaROG    #
-#    Updated on 2024/03/22 by rathaROG    #
+#    Rewrote on 2023/06/26 by rathaROG    #
+#    Updated on 2024/11/07 by rathaROG    #
 # # # # # # # # # # # # # # # # # # # # # #
 
 
-from setuptools import setup, find_packages
-from setuptools.extension import Extension
+from setuptools import Extension, setup, find_packages
 
 license = "MIT"
 description = "Customized Torchreid for pyppbox: Deep learning person re-identification."
 long_description = open("README.md", encoding="utf-8").read()
-requirments_txt = "requirements.txt"
+requirements_txt = "requirements.txt"
 package_name = "pyppbox-torchreid"
 package_path = "pyppbox_torchreid"
 
 def get_version_string():
-    version_py = "pyppbox_torchreid/__init__.py"
-    with open(version_py) as version_file:
+    with open("pyppbox_torchreid/__init__.py") as version_file:
         for line in version_file.read().splitlines():
             if line.startswith('__version__'):
                 delim = '"' if '"' in line else "'"
                 return line.split(delim)[1]
 
-def read_requirments():
-    with open(requirments_txt) as requirments_file:
-        return [line for line in requirments_file.read().splitlines()]
+def read_requirements():
+    with open(requirements_txt) as requirements_file:
+        return [line for line in requirements_file.read().splitlines()]
 
 def compile_cpp(cython_file):
-    """Compile cpp from Cython's pyx or py.
+    """Compile a C++ file from Cython's pyx or py.
     """
     import os
     import subprocess
     cpp_file = os.path.splitext(cython_file)[0] + ".cpp"
     flags = ['--fast-fail', '--cplus']
-    rc = subprocess.call(['cython'] + flags + ["-o", cpp_file, cython_file])
+    rc = subprocess.call(['cython'] + flags + ['-o', cpp_file, cython_file])
     if rc != 0: raise Exception('Cythonizing %s failed' % cython_file)
     else: return cpp_file
 
@@ -45,7 +43,7 @@ def numpy_include():
         numpy_include = np.get_numpy_include()
     return numpy_include
 
-def main():
+def main_setup():
     import os
     from Cython.Build import cythonize
     ext_name = "pyppbox_torchreid.metrics.rank_cylib.rank_cy"
@@ -70,7 +68,7 @@ def main():
         url='https://github.com/rathaumons/torchreid-for-pyppbox',
         packages=find_packages(),
         keywords=['Person Re-Identification', 'Deep Learning', 'pyppbox'],
-        install_requires=read_requirments(),
+        install_requires=read_requirements(),
         python_requires=">=3.8",
         classifiers=['Development Status :: 4 - Beta',
                      'Environment :: Console',
@@ -85,6 +83,7 @@ def main():
                      'Programming Language :: Python :: 3.10',
                      'Programming Language :: Python :: 3.11',
                      'Programming Language :: Python :: 3.12',
+                     'Programming Language :: Python :: 3.13',
                      'Topic :: Education',
                      'Topic :: Education :: Testing',
                      'Topic :: Scientific/Engineering',
@@ -108,4 +107,4 @@ if __name__ == "__main__":
     >>> python -m build --sdist
     >>> python -m build --wheel
     """ 
-    main()
+    main_setup()

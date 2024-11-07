@@ -1,4 +1,5 @@
-[![Test Build Python [3.8-3.12]](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml) 
+[![Test Multi](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_multi.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_multi.yaml) 
+[![Test Build Python [3.8-3.13]](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml) 
 [![Publish to PyPI](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml)
 
 # Customized Torchreid for pyppbox
@@ -18,32 +19,15 @@ Use the pre-built [wheel in releases](https://github.com/rathaumons/torchreid-fo
 pip install pyppbox-torchreid
 ```
 
-Or install from GitHub repo directly (Require C++ compiler):
+<details><summary>Other options</summary>
+
+### Install from GitHub repo (Require C++ compiler):
 
 ```
 pip install git+https://github.com/rathaumons/torchreid-for-pyppbox.git
 ```
 
-To be able to run, you must install [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/); for example, with GPU support:
-
-```
-pip install opencv-contrib-python
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-```
-
-***Note*: [PyTorch](https://pytorch.org/) doesn't have GPU support for macOS.**
-
-## Build from source
-
-(Optional, auto install) Building wheels/source distribution requires these modules:
-
-```
-pip install "setuptools>=67.2.0"
-pip install "Cython>=0.29.32"
-pip install "numpy>=1.23.5"
-```
-
-This requires C++ compiler and is recommended using `build`:
+### Build and install (Require C++ compiler):
 
 ```
 git clone https://github.com/rathaumons/torchreid-for-pyppbox/
@@ -55,9 +39,22 @@ python -m build --wheel
 cd dist
 ```
 
-After you install `pyppbox-torchred`, [OpenCV](https://github.com/opencv/opencv-python) and [PyTorch](https://pytorch.org/), you can check Cython `rank_cy`:
+</details>
+
+## Test
+
+Make sure you install `pyppbox-torchred`, [OpenCV](https://github.com/opencv/opencv-python), [PyTorch](https://pytorch.org/) and other [requirements](https://github.com/rathaumons/torchreid-for-pyppbox/blob/main/requirements.txt); for example, with GPU support on Windows:
 
 ```
+pip install opencv-contrib-python
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install pyppbox-torchreid
+```
+
+Test Cython `rank_cylib`
+
+```
+git clone https://github.com/rathaumons/torchreid-for-pyppbox.git
 cd pyppbox_torchreid/metrics/rank_cylib
 python test_cython.py
 ```

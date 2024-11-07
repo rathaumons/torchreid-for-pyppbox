@@ -6,6 +6,8 @@ six
 scipy>=1.10.0
 matplotlib
 tensorboard
+torch
+torchvision
 future
 yacs
 gdown
