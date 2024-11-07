@@ -11,7 +11,7 @@
 
 All source credit and more info -> [Original KaiyangZhou's repo](https://github.com/KaiyangZhou/deep-person-reid). 
 
-## Install
+## 💽 Install
 
 Use the pre-built [wheel in releases](https://github.com/rathaumons/torchreid-for-pyppbox/releases) or install from [PyPI](https://pypi.org/project/pyppbox-torchreid/): 
 
@@ -41,7 +41,7 @@ cd dist
 
 </details>
 
-## Test
+## 🔬 Test
 
 Make sure you install `pyppbox-torchred`, [OpenCV](https://github.com/opencv/opencv-python), [PyTorch](https://pytorch.org/) and other [requirements](https://github.com/rathaumons/torchreid-for-pyppbox/blob/main/requirements.txt); for example, with GPU support on Windows:
 
