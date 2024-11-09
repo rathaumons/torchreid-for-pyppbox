@@ -47,7 +47,7 @@ Make sure you install `pyppbox-torchred`, [OpenCV](https://github.com/opencv/ope
 
 ```
 pip install opencv-contrib-python
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
 pip install pyppbox-torchreid
 ```
 
