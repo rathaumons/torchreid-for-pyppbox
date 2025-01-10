@@ -55,6 +55,6 @@ Test Cython `rank_cylib`
 
 ```
 git clone https://github.com/rathaumons/torchreid-for-pyppbox.git
-cd pyppbox_torchreid/metrics/rank_cylib
+cd torchreid-for-pyppbox/metrics/rank_cylib
 python test_cython.py
 ```
