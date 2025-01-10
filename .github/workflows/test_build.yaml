@@ -1,4 +1,4 @@
-name: Test Build Python [3.8-3.13]
+name: Test Build Python [3.9-3.13]
 
 on: [workflow_dispatch]
 
@@ -14,12 +14,12 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.21.3
+        run: python -m pip install cibuildwheel==2.22.0
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD_VERBOSITY: 1
-          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+          CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
           CIBW_SKIP: "*-win32 pp*"
           CIBW_ARCHS_WINDOWS: "AMD64 ARM64"
       - name: Archive wheels
@@ -38,12 +38,12 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.21.3
+        run: python -m pip install cibuildwheel==2.22.0
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD_VERBOSITY: 1
-          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+          CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
           CIBW_SKIP: "pp*"
           CIBW_ARCHS_MACOS: "x86_64"
       - name: Archive wheels
@@ -62,12 +62,12 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.21.3
+        run: python -m pip install cibuildwheel==2.22.0
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD_VERBOSITY: 1
-          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+          CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
           CIBW_SKIP: "pp*"
           CIBW_ARCHS_MACOS: "arm64"
       - name: Archive wheels
@@ -86,12 +86,12 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.21.3
+        run: python -m pip install cibuildwheel==2.22.0
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
           CIBW_BUILD_VERBOSITY: 1
-          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+          CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
           CIBW_SKIP: "*-manylinux_i686 pp*"
           CIBW_ARCHS_LINUX: "x86_64"
       - name: Archive wheels
@@ -110,10 +110,10 @@ jobs:
         with:
           platforms: arm64
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.21.3
+        uses: pypa/cibuildwheel@v2.22.0
         env:
           CIBW_BUILD_VERBOSITY: 1
-          CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+          CIBW_BUILD: "cp39-* cp310-* cp311-* cp312-* cp313-*"
           CIBW_ARCHS_LINUX: "aarch64"
       - name: Archive wheels
         uses: actions/upload-artifact@v4
