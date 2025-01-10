@@ -1,5 +1,5 @@
 [![Test Multi](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_multi.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_multi.yaml) 
-[![Test Build Python [3.8-3.13]](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml) 
+[![Test Build Python [3.9-3.13]](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/test_build.yaml) 
 [![Publish to PyPI](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml/badge.svg)](https://github.com/rathaumons/torchreid-for-pyppbox/actions/workflows/publish_pypi.yaml)
 
 # Customized Torchreid for pyppbox
